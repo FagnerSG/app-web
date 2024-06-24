@@ -8,12 +8,13 @@ import org.springframework.stereotype.Service;
 import com.app_web.entity.Todo;
 import com.app_web.repository.TodoRepository;
 
+
 @Service
 public class TodoService {
 
-    @Autowired
     public TodoRepository todoRepository;
 
+    @Autowired
     public TodoService(TodoRepository todoRepository) {
         this.todoRepository = todoRepository;
     }
@@ -23,9 +24,6 @@ public class TodoService {
         return list();
     }
 
-    /**
-     * @return
-     */
     public List<Todo> list() {
         return (List<Todo>) todoRepository.findAll();
     }

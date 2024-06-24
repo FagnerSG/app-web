@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.app_web.entity.Todo;
 import com.app_web.service.TodoService;
 
-
 import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
@@ -42,7 +41,7 @@ public class TodoController {
     @ApiOperation(value = "Delete a todo")
     @DeleteMapping("/{id}")
     @RequestMapping(value="/todo", method=RequestMethod.DELETE)
-    List<Todo> delete(@PathVariable("id") Long id) {
+    List<Todo> delete(@PathVariable()Long id) {
         return todoService.delete(id);
     }
 
