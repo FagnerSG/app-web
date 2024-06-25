@@ -2,7 +2,6 @@ package com.app_web.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app_web.entity.Todo;
@@ -14,7 +13,6 @@ public class TodoService {
 
     public TodoRepository todoRepository;
 
-    @Autowired
     public TodoService(TodoRepository todoRepository) {
         this.todoRepository = todoRepository;
     }
