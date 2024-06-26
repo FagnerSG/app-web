@@ -30,7 +30,7 @@ public class DynamoDBConfig {
     public AmazonDynamoDB amazonDynamoDB() {
         return AmazonDynamoDBClientBuilder.standard()
                 .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(
-                        amazonDynamoDBEndpoint, "us-west-1"))
+                        "amazon.dynamodb.endpoint", "us-west-1"))
                 .withCredentials(new AWSStaticCredentialsProvider(
                         new BasicAWSCredentials("amazonAWSAccessKey", "amazonAWSSecretKey")))
                 .build();
@@ -41,10 +41,5 @@ public class DynamoDBConfig {
     public DynamoDBMapperConfig dynamoDBMapperConfig() {
         return DynamoDBMapperConfig.DEFAULT;
     }
-
-    /*public AWSCredentials amazonAWSCredentials() {
-        return new BasicAWSCredentials(
-            amazonAWSAccessKey, amazonAWSSecretKey);
-    }*/
 
 }
