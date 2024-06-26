@@ -1,6 +1,7 @@
 package com.app_web.config;
 
 import org.socialsignin.spring.data.dynamodb.repository.config.EnableDynamoDBRepositories;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,20 +15,34 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 @EnableDynamoDBRepositories(basePackages = "com.app_web.repository")
 public class DynamoDBConfig {
 
+    @Value("${amazon.dynamodb.endpoint}")
+    private String amazonDynamoDBEndpoint;
+
+    @Value("${amazon.aws.accesskey}")
+    private String amazonAWSAccessKey;
+
+    @Value("${amazon.aws.secretkey}")
+    private String amazonAWSSecretKey;
+    
     @Bean
     public AmazonDynamoDB amazonDynamoDB() {
         return AmazonDynamoDBClientBuilder.standard()
                 .withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(
-                        "http://localhost:8000", "us-west-1"))
+                        amazonDynamoDBEndpoint, "us-west-1"))
                 .withCredentials(new AWSStaticCredentialsProvider(
-                        new BasicAWSCredentials("admin", "admin")))
+                        new BasicAWSCredentials("amazonAWSAccessKey", "amazonAWSSecretKey")))
                 .build();
     }
 
-    /*@Bean(name = "dynamoDBMapperConfig")
+    @Bean(name = "dynamoDBMapperConfig")
     @Primary
     public DynamoDBMapperConfig dynamoDBMapperConfig() {
         return DynamoDBMapperConfig.DEFAULT;
+    }*/
+
+    /*public AWSCredentials amazonAWSCredentials() {
+        return new BasicAWSCredentials(
+            amazonAWSAccessKey, amazonAWSSecretKey);
     }*/
 
 }
