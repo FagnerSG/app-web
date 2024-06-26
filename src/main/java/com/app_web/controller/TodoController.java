@@ -3,6 +3,7 @@ package com.app_web.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,7 +22,9 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 @RestController
 @RequestMapping("/todos")
 public class TodoController {
-    public TodoService todoService;
+
+    @Autowired
+    private TodoService todoService;
 
     public TodoController(TodoService todoService) {
         this.todoService = todoService;
@@ -48,7 +51,7 @@ public class TodoController {
 
     @DeleteMapping("/{id}")
     @RequestMapping(value="/todo", method=RequestMethod.DELETE)
-    List<Todo> delete(@PathVariable()Long id) {
+    List<Todo> delete(@PathVariable Long id) {
         return todoService.delete(id);
     }
 

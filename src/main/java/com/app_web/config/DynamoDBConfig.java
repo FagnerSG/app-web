@@ -42,9 +42,5 @@ public class DynamoDBConfig {
         return DynamoDBMapperConfig.DEFAULT;
     }
 
-    /*public AWSCredentials amazonAWSCredentials() {
-        return new BasicAWSCredentials(
-            amazonAWSAccessKey, amazonAWSSecretKey);
-    }*/
 
 }
