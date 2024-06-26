@@ -22,9 +22,9 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 @RestController
 @RequestMapping("/todos")
 public class TodoController {
-    
+
     @Autowired
-    public TodoService todoService;
+    private TodoService todoService;
 
     public TodoController(TodoService todoService) {
         this.todoService = todoService;

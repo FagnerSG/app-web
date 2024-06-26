@@ -8,5 +8,5 @@ RUN mvn clean package -DskipTests
 FROM openjdk:17-jdk-slim
 WORKDIR /app-node
 COPY --from=build /app/target/app-node.jar app-node.jar
-EXPOSE 8080
+EXPOSE 5000
 ENTRYPOINT ["java", "-jar", "app-node.jar"]
